@@ -1,0 +1,9 @@
+# This file provides instructions for packaging.
+
+`Types-Encodings`
+	perl_version_from m`Types::Encodings`;
+	version_from      m`Types::Encodings`;
+	readme_from       m`Types::Encodings`;
+	requires          p`Type::Library 0.004`;
+	.
+
