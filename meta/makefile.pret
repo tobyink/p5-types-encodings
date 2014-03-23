@@ -1,9 +1,9 @@
 # This file provides instructions for packaging.
 
 `Types-Encodings`
-	perl_version_from m`Types::Encodings`;
-	version_from      m`Types::Encodings`;
-	readme_from       m`Types::Encodings`;
-	requires          p`Type::Library 0.004`;
+	deps:runtime-requirement [ deps:on "perl 5.008001"^^deps:CpanId ];
+	deps:runtime-requirement [ deps:on "Type::Library 0.004"^^deps:CpanId ];
+	deps:test-requirement    [ deps:on "Test::More 0.96"^^deps:CpanId ];
+	deps:test-requirement    [ deps:on "Test::TypeTiny"^^deps:CpanId ];
 	.
 

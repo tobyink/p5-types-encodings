@@ -8,4 +8,5 @@
 	issued  2014-03-23;
 	changeset [
 		item "Don't use overloaded addition in examples or test cases; Type::Tiny no longer supports it."^^Update;
+		item "use Dist::Inkt"^^Packaging;
 	].
