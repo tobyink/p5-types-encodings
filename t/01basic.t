@@ -61,36 +61,36 @@ STR_BYTES_CHARS_ENCODE_AND_DECODE: {
 	should_fail($bytes_western, Chars);
 	should_pass($bytes_western, Bytes);
 
-	my $BytesUTF8 = Bytes + Encode["utf-8"];
+	my $BytesUTF8 = Bytes->plus_coercions( Encode["utf-8"] );
 
 	is(
 		$BytesUTF8->coerce($chars),
 		$bytes_utf8,
-		'coerce using Bytes + Encode["utf-8"]',
+		'coerce using Bytes->plus_coercions( Encode["utf-8"] )',
 	);
 
-	my $BytesWestern = Bytes + Encode["iso-8859-1"];
+	my $BytesWestern = Bytes->plus_coercions( Encode["iso-8859-1"] );
 
 	is(
 		$BytesWestern->coerce($chars),
 		$bytes_western,
-		'coerce using Bytes + Encode["iso-8859-1"]',
+		'coerce using Bytes->plus_coercions( Encode["iso-8859-1"] )',
 	);
 
-	my $CharsFromUTF8 = Chars + Decode["utf-8"];
+	my $CharsFromUTF8 = Chars->plus_coercions( Decode["utf-8"] );
 
 	is(
 		$CharsFromUTF8->coerce($bytes_utf8),
 		$chars,
-		'coerce using Chars + Decode["utf-8"]',
+		'coerce using Chars->plus_coercions( Decode["utf-8"] )',
 	);
 
-	my $CharsFromWestern = Chars + Decode["iso-8859-1"];
+	my $CharsFromWestern = Chars->plus_coercions( Decode["iso-8859-1"] );
 
 	is(
 		$CharsFromWestern->coerce($bytes_western),
 		$chars,
-		'coerce using Chars + Decode["iso-8859-1"]',
+		'coerce using Chars->plus_coercions( Decode["iso-8859-1"] )',
 	);
 };
 
@@ -103,8 +103,8 @@ ARRAYREF_JOIN_AND_SPLIT: {
 	is(length($bytes_utf8),    19, 'length $bytes_utf8 == 19');
 	is(length($bytes_western), 17, 'length $bytes_western == 17');
 
-	my $SplitSpace = (ArrayRef[Str]) + (Split[qr/\s/]);
-	my $SplitPipe  = (ArrayRef[Str]) + (Split[qr/\|/]);
+	my $SplitSpace = (ArrayRef[Str])->plus_coercions(Split[qr/\s/]);
+	my $SplitPipe  = (ArrayRef[Str])->plus_coercions(Split[qr/\|/]);
 	my $ArrChars   = ArrayRef[Chars];
 	my $ArrBytes   = ArrayRef[Bytes];
 
@@ -159,7 +159,7 @@ ARRAYREF_JOIN_AND_SPLIT: {
 		'$SplitPipe->coerce($bytes_western)',
 	);
 
-	my $JoinPipe = Str + Join["|"];
+	my $JoinPipe = Str->plus_coercions( Join["|"] );
 
 	is(
 		$_ = $JoinPipe->coerce($arr_chars),

@@ -101,7 +101,7 @@ expects a character set:
    
    has filename => (
       is     => "ro",
-      isa    => Bytes + Encode["utf-8"],
+      isa    => Bytes->plus_coercions( Encode["utf-8"] ),
       coerce => 1,
    );
 
