@@ -10,3 +10,15 @@
 		item "Don't use overloaded addition in examples or test cases; Type::Tiny no longer supports it."^^Update;
 		item "use Dist::Inkt"^^Packaging;
 	].
+
+`Types-Encodings 0.003 cpan:TOBYINK`
+	issued  2019-10-01;
+	changeset [
+		item [
+			a dcs:Bugfix;
+			seealso <https://github.com/tobyink/p5-types-encodings/issues/1>;
+			seealso <https://github.com/tobyink/p5-types-encodings/issues/2>;
+			label "Inlined code didn't check value was a Str.";
+			dcs:thanks cpan:CXW;
+		];
+	].
