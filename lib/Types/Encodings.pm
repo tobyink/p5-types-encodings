@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Types::Encodings::AUTHORITY = 'cpan:TOBYINK';
-	$Types::Encodings::VERSION   = '0.002';
+	$Types::Encodings::VERSION   = '0.003';
 }
 
 use Type::Library -base, -declare => qw( Str Bytes Chars );

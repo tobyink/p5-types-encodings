@@ -36,6 +36,13 @@ use Types::Standard qw( ArrayRef Join Split );
 use Types::Encodings qw( Str Bytes Chars Encode Decode );
 use Type::Utils;
 
+UNDEFINED_AND_REFS: {
+	should_fail(undef, Bytes);
+	should_fail(undef, Chars);	
+	should_fail(\1, Bytes);
+	should_fail(\1, Chars);	
+};
+
 STR_BYTES_CHARS_ENCODE_AND_DECODE: {
 	my $chars          = "café";
 	my $bytes_utf8     = Encode::encode("utf-8",      $chars);
