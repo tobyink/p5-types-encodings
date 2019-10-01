@@ -21,12 +21,12 @@ declare Str,
 declare Bytes,
 	as Str,
 	where     { !utf8::is_utf8($_) },
-	inline_as { "!utf8::is_utf8($_)" };
+	inline_as { sprintf '(%s) && %s', Str->inline_check($_), "!utf8::is_utf8($_)" };
 
 declare Chars,
 	as Str,
 	where     { utf8::is_utf8($_) or $_ =~ $Types::Encodings::SevenBitSafe },
-	inline_as { "utf8::is_utf8($_) or $_ =~ \$Types::Encodings::SevenBitSafe" };
+	inline_as { sprintf '(%s) && (%s)',  Str->inline_check($_), "utf8::is_utf8($_) or $_ =~ \$Types::Encodings::SevenBitSafe" };
 
 declare_coercion Decode => to_type Chars, {
 	coercion_generator => sub {
