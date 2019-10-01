@@ -1,4 +1,4 @@
-, 2019package Types::Encodings;
+package Types::Encodings;
 
 use 5.008001;
 use strict;
