@@ -38,9 +38,9 @@ use Type::Utils;
 
 UNDEFINED_AND_REFS: {
 	should_fail(undef, Bytes);
-	should_fail(undef, Chars);	
+	should_fail(undef, Chars);
 	should_fail(\1, Bytes);
-	should_fail(\1, Chars);	
+	should_fail(\1, Chars);
 };
 
 STR_BYTES_CHARS_ENCODE_AND_DECODE: {
